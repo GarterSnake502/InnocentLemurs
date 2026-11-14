@@ -191,8 +191,9 @@ func check_diversity():
 		update_ui()
 	elif enclosedAmount >= MIN_LEMURS:
 		var pts = get_fib_pts(enclosedAmount)
-		#var pts = get_fib_pts(enclosedAmount)
 		points += pts * 100
+		$"Lasso Fanfare".pitch_scale = 1 + (pts - 1) * 0.1
+		$"Lasso Fanfare".play()
 		for body in enclosedLemurs:
 			body.collect(pts)
 		update_ui()
