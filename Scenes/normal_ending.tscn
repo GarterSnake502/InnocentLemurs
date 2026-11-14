@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://8r8hipyhi7if"]
+
+[ext_resource type="Texture2D" uid="uid://vuewutqd7x1v" path="res://Assets/Tiles/space.png" id="1_tprim"]
+[ext_resource type="Texture2D" uid="uid://cvy3eg1b3rk8s" path="res://Assets/spaceship.png" id="2_chsy7"]
+[ext_resource type="Texture2D" path="res://Assets/sun.png" id="3_2idwx"]
+
+[sub_resource type="Animation" id="Animation_c8kfn"]
+resource_name = "fly"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgc0p"]
+_data = {
+&"fly": SubResource("Animation_c8kfn")
+}
+
+[node name="NormalEnding" type="Node2D" unique_id=511534450]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1919996095]
+libraries/ = SubResource("AnimationLibrary_kgc0p")
+autoplay = &"fly"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1354003002]
+offset_right = 354.0
+offset_bottom = 185.0
+texture = ExtResource("1_tprim")
+stretch_mode = 1
+
+[node name="RocketSprite" type="Sprite2D" parent="." unique_id=971932663]
+position = Vector2(-49, 82)
+texture = ExtResource("2_chsy7")
+
+[node name="SunSprite" type="Sprite2D" parent="." unique_id=1911017117]
+position = Vector2(207.00002, 80)
+scale = Vector2(6, 6)
+texture = ExtResource("3_2idwx")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=763622355]
+position = Vector2(144, 81)
+zoom = Vector2(4, 4)
