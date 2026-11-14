@@ -4,12 +4,18 @@ const GRAVITY = 10
 const JUMP_SPEED = 32
 const START_JUMP_VEL = -3
 
+const COLORS = [Color(1, 0, 0.5), Color(0, 0.8, 0.8), Color(1, 0.7, 0), Color(0.5, 0, 1)]
+
 var jump_dir = Vector2(0, 0)
 var vert_vel = 0
+var color: Color
+
 
 func _ready():
 	$"Jump Timer".wait_time = randf_range(1, 3)
 	$"Jump Timer".start()
+	color = COLORS[randi_range(0, 4)]
+	$Lemur.self_modulate = color
 
 func _physics_process(delta: float) -> void:
 	if vert_vel < -START_JUMP_VEL:
