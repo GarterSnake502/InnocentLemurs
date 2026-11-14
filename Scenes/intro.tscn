@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cqusb7mqe2gof" path="res://Scripts/intro.gd" id="1_b226h"]
 [ext_resource type="AudioStream" uid="uid://d4mcqoscykx43" path="res://Assets/heartbeat.mp3" id="2_duh1u"]
-[ext_resource type="Shader" path="res://Assets/intro.gdshader" id="3_alxvg"]
+[ext_resource type="Shader" uid="uid://cjxgj3nu6rr8b" path="res://Assets/intro.gdshader" id="3_alxvg"]
+[ext_resource type="AudioStream" uid="uid://cfa5u66gsd0ji" path="res://Assets/rock_music.wav" id="4_geirw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_geirw"]
 shader = ExtResource("3_alxvg")
@@ -184,6 +185,9 @@ libraries/ = SubResource("AnimationLibrary_b226h")
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=1405814074]
 stream = ExtResource("2_duh1u")
 autoplay = true
+
+[node name="rockmusic" type="AudioStreamPlayer" parent="." unique_id=1142772704]
+stream = ExtResource("4_geirw")
 
 [node name="Label" type="Label" parent="." unique_id=546782049]
 modulate = Color(1, 1, 1, 0)
