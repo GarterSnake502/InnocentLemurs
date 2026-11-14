@@ -1,8 +1,46 @@
 [gd_scene format=3 uid="uid://dm5h4gitcppqs"]
 
 [ext_resource type="Texture2D" uid="uid://vuewutqd7x1v" path="res://Assets/Tiles/space.png" id="1_tavmq"]
-[ext_resource type="AudioStream" uid="uid://b48nmx7fmhffw" path="res://Assets/crossover_ending.mp3" id="2_tavmq"]
-[ext_resource type="Texture2D" uid="uid://6121t6cup750" path="res://Assets/sun.png" id="2_vlpce"]
+[ext_resource type="AudioStream" uid="uid://d14ooduk414i7" path="res://Assets/crossover_ending.mp3" id="2_tavmq"]
+[ext_resource type="Texture2D" uid="uid://cr5mjbt3qc3lc" path="res://Assets/sun.png" id="2_vlpce"]
+
+[sub_resource type="Animation" id="Animation_rgxcf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.21950102, 0.21950102, 0.21950102, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wq3l2"]
+resource_name = "pulse"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.21950102, 0.21950102, 0.21950102, 1), Color(0.46229059, 0.46229059, 0.46229059, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgxcf"]
+_data = {
+&"RESET": SubResource("Animation_rgxcf"),
+&"pulse": SubResource("Animation_wq3l2")
+}
 
 [sub_resource type="Animation" id="Animation_vlpce"]
 length = 0.001
@@ -50,6 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="bg" type="TextureRect" parent="." unique_id=320213109]
+modulate = Color(0.21950102, 0.21950102, 0.21950102, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,6 +99,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_tavmq")
 stretch_mode = 1
+
+[node name="sky_pulse" type="AnimationPlayer" parent="bg" unique_id=1747740108]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_rgxcf")
+autoplay = &"pulse"
 
 [node name="sun" type="Sprite2D" parent="." unique_id=687001562]
 position = Vector2(42, 39.999996)
