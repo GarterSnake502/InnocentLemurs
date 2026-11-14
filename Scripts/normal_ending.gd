@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	$"Point Display".text = "Points: " + str(Score.points)
 	$AnimationPlayer.play("fly")
 
 func _process(delta: float) -> void:

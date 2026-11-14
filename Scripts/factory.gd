@@ -1,6 +1,5 @@
 extends Node2D
 
-var points = 0
 var suns_remaining = 3
 
 @onready var bumper = $bumperArea
@@ -26,6 +25,7 @@ var terrorist_missles = MAX_TERRORIST_MISSLES
 const TESLA_SCORE = 5000
 
 func _ready():
+	print(str(Score.points))
 	for i in range(0, 8):
 		spawn_lemur()
 		nextWaveTime.max_value = MAX_TIME
@@ -66,14 +66,14 @@ func restore_spawn_time():
 		anim.play("win")
 		$music.stop()
 		await anim.animation_finished
-		if points >= TESLA_SCORE:
+		if Score.points >= TESLA_SCORE:
 			get_tree().change_scene_to_file("res://Scenes/telsa_ending.tscn")
 		else:
 			get_tree().change_scene_to_file("res://Scenes/normal_ending.tscn")
 
 # /// UI /// #
 func update_ui():
-	ptsLabel.text = "Points: " + str(points)
+	ptsLabel.text = "Points: " + str(Score.points)
 	if suns_remaining < 3 and sun3.visible:
 		destroy_sun(sun3)
 		sun2.texture = load("res://Assets/UI/sun-nervous-1.png")
@@ -172,7 +172,7 @@ const MIN_LEMURS = 3
 func check_diversity():
 	var poly = enclosureLine.points
 	if poly.size() < 3:
-		return # valid shape has >3 points
+		return # valid shape has >3 Score.points
 	var enclosedLemurs = []
 	for lemur in get_tree().get_nodes_in_group("lemurs"):
 		if Geometry2D.is_point_in_polygon(enclosureLine.to_local(lemur.global_position), poly):
@@ -191,7 +191,7 @@ func check_diversity():
 		update_ui()
 	elif enclosedAmount >= MIN_LEMURS:
 		var pts = get_fib_pts(enclosedAmount)
-		points += pts * 100
+		Score.points += pts * 100
 		$"Lasso Fanfare".pitch_scale = 1 + (pts - 1) * 0.1
 		$"Lasso Fanfare".play()
 		for body in enclosedLemurs:
