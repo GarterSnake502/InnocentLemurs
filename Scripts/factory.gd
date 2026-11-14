@@ -17,16 +17,22 @@ var suns_remaining = 3
 @onready var gameOverSfx = $gameover
 @onready var anim = $anim
 
+const MAX_TIME = 18.0
+var time_remaining = MAX_TIME
+
+func _ready():
+	for i in range(0, 8):
+		spawn_lemur()
+		nextWaveTime.max_value = MAX_TIME
+
 func _process(delta):
 	_process_bumping(delta)
 	_process_enclosure(delta)
 	_process_spawn(delta)
 
 # /// SPAWN /// #
-var time_remaining = 10.0
 var spawn_interval = 1
 var spawn_time_remaining = spawn_interval
-const MAX_TIME = 10.0
 func _process_spawn(delta):
 	# spawn in pipes at intervals
 	if spawn_time_remaining <= 0:
@@ -43,10 +49,7 @@ func _process_spawn(delta):
 
 func spawn_lemur():
 	var lemur = load("res://Scenes/Lemur.tscn").instantiate()
-	var spawnNum = randi_range(1, 8)
-	var spawnPoint = get_node("spawnPositions/" + str(spawnNum))
-	lemur.global_position = spawnPoint.global_position
-	add_child(lemur)
+	$Lemurs.add_child(lemur)
 
 func restore_spawn_time():
 	time_remaining = MAX_TIME
