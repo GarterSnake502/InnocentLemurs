@@ -62,6 +62,7 @@ func restore_spawn_time():
 	time_remaining = MAX_TIME
 	if terrorist_missles <= 0:
 		anim.play("win")
+		$music.stop()
 		await anim.animation_finished
 		get_tree().change_scene_to_file("res://Scenes/normal_ending.tscn")
 
@@ -85,15 +86,16 @@ func destroy_sun(sun):
 	sun.texture = load("res://Assets/UI/sun-dead.png")
 	explosionSfx.pitch_scale = randf_range(0.9, 1.1)
 	explosionSfx.play()
-	var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
-	explosion.global_position = sun.global_position
-	explosion.emitting = true
-	canvas.add_child(explosion)
+	#var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
+	#explosion.global_position = sun.global_position
+	#explosion.emitting = true
+	#canvas.add_child(explosion)
 	anim.play("shake")
 	await get_tree().create_timer(1.5).timeout
 	sun.hide()
 
 func destroy_world():
+	$music.stop()
 	anim.play("gameover")
 	gameOverSfx.play()
 	for child in canvas.get_children():
