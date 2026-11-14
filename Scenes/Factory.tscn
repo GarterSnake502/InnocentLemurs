@@ -198,4 +198,30 @@ position = Vector2(142, -44)
 tile_map_data = PackedByteArray("AAAQAAQABQACAAAABAAQAAMABQACAAAABgARAAQABQADAAAAAwASAAQABQADAAAAAwARAAMABQADAAAABAASAAMABQADAAAABAAQAPz/BQACAAAABAAQAPv/BQACAAAABgARAPz/BQADAAAAAwASAPz/BQADAAAAAwARAPv/BQADAAAABAASAPv/BQADAAAABADt//v/BQADAAAABADu//v/BQADAAAABADt//z/BQADAAAAAwDu//z/BQADAAAAAwDv//v/BQACAAAABwDv//z/BQACAAAABQDt/wMABQADAAAABADu/wMABQADAAAABADt/wQABQADAAAAAwDu/wQABQADAAAAAwDv/wQABQACAAAABQDv/wMABQACAAAABwD4/wkABQADAAAAAQD4/woABQADAAAAAQD5/wkABQADAAAAAAD5/woABQADAAAAAAD5/wgABQACAAAAAAD4/wgABQACAAAAAQAGAAgABQACAAAAAQAHAAgABQACAAAAAAAHAAkABQADAAAAAAAHAAoABQADAAAAAAAGAAkABQADAAAAAQAGAAoABQADAAAAAQD4//X/BQADAAAAAQD4//b/BQADAAAAAQD5//X/BQADAAAAAAD5//b/BQADAAAAAAD4//f/BQACAAAAAwD5//f/BQACAAAAAgAHAPX/BQADAAAAAAAHAPb/BQADAAAAAAAGAPX/BQADAAAAAQAGAPb/BQADAAAAAQAHAPf/BQACAAAAAgAGAPf/BQACAAAAAwA=")
 tile_set = ExtResource("7_4sda8")
 
+[node name="spawnPositions" type="Node2D" parent="." unique_id=258586774]
+
+[node name="1" type="Node2D" parent="spawnPositions" unique_id=321253373]
+position = Vector2(254, -64)
+
+[node name="2" type="Node2D" parent="spawnPositions" unique_id=1852720043]
+position = Vector2(255, 64)
+
+[node name="3" type="Node2D" parent="spawnPositions" unique_id=2288080]
+position = Vector2(112, 131)
+
+[node name="4" type="Node2D" parent="spawnPositions" unique_id=1310190319]
+position = Vector2(-112, 131)
+
+[node name="5" type="Node2D" parent="spawnPositions" unique_id=1464515431]
+position = Vector2(-254, 64)
+
+[node name="6" type="Node2D" parent="spawnPositions" unique_id=1889887154]
+position = Vector2(-254, -64)
+
+[node name="7" type="Node2D" parent="spawnPositions" unique_id=440000042]
+position = Vector2(-112, -123)
+
+[node name="8" type="Node2D" parent="spawnPositions" unique_id=875556660]
+position = Vector2(112, -123)
+
 [connection signal="body_entered" from="bumperArea" to="." method="bump"]
