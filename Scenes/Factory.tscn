@@ -1,6 +1,87 @@
 [gd_scene format=3 uid="uid://csk5vs07g0cnp"]
 
 [ext_resource type="Script" uid="uid://d0ljnvcc4o802" path="res://Scripts/factory.gd" id="1_xfy5e"]
+[ext_resource type="Texture2D" uid="uid://wskuw3dnwc8m" path="res://icon.svg" id="2_ix8fr"]
+[ext_resource type="AudioStream" uid="uid://bh5np5xqhbjmg" path="res://Assets/explosion.wav" id="3_j7huh"]
+[ext_resource type="AudioStream" uid="uid://c1oim11q1v3sr" path="res://Assets/gameover.wav" id="4_wu7b3"]
+[ext_resource type="AudioStream" uid="uid://bupu8e28wlhmk" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
+
+[sub_resource type="Animation" id="Animation_wu7b3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/black:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a5v3u"]
+resource_name = "gameover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.16666669, 0.23333333, 0.3, 0.36666667, 0.43333337, 0.5, 0.56666666, 0.6333333, 0.7, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/black:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75010735),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j7huh"]
+resource_name = "shake"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.16666669, 0.23333333, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu7b3"]
+_data = {
+&"RESET": SubResource("Animation_wu7b3"),
+&"gameover": SubResource("Animation_a5v3u"),
+&"shake": SubResource("Animation_j7huh")
+}
 
 [node name="Factory" type="Node2D" unique_id=531250293]
 script = ExtResource("1_xfy5e")
@@ -9,3 +90,53 @@ script = ExtResource("1_xfy5e")
 closed = true
 width = 5.0
 default_color = Color(0.9999997, 0.7994698, 0.15145713, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1711277492]
+
+[node name="Points" type="Label" parent="CanvasLayer" unique_id=2103256846]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Points: "
+
+[node name="sun1" type="Sprite2D" parent="CanvasLayer" unique_id=1311740987]
+position = Vector2(59, 98)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("2_ix8fr")
+
+[node name="sun2" type="Sprite2D" parent="CanvasLayer" unique_id=115554256]
+position = Vector2(146, 98)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("2_ix8fr")
+
+[node name="sun3" type="Sprite2D" parent="CanvasLayer" unique_id=746917767]
+position = Vector2(235, 98)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("2_ix8fr")
+
+[node name="black" type="ColorRect" parent="CanvasLayer" unique_id=907466740]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="explosion" type="AudioStreamPlayer" parent="." unique_id=1896251390]
+stream = ExtResource("3_j7huh")
+
+[node name="gameover" type="AudioStreamPlayer" parent="." unique_id=1175573166]
+stream = ExtResource("4_wu7b3")
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=715252803]
+stream = ExtResource("5_a5v3u")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=964476370]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=835746108]
+position = Vector2(24, 12)
+texture = ExtResource("2_ix8fr")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1933290887]
+libraries/ = SubResource("AnimationLibrary_wu7b3")
