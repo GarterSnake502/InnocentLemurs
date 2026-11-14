@@ -51,9 +51,10 @@ func start_jump(angle, jump_speed = JUMP_SPEED):
 func bump_sfx():
 	$bump.play()
 
-func collect():
+func collect(point_amount):
 	set_physics_process(false)
 	$AnimationPlayer.play("die")
+	$collect.pitch_scale = 1.0 + ((point_amount / 100) - 1) / 10
 	$collect.play()
 	await $AnimationPlayer.animation_finished
 	queue_free()
