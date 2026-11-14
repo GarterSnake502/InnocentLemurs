@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-const GRAVITY = 10
+const GRAVITY = 60   
 const JUMP_SPEED = 32
-const START_JUMP_VEL = -3
+const START_JUMP_VEL = -20
 
 const COLORS = [Color(1, 0, 0.5), Color(0, 0.8, 0.8), Color(1, 0.7, 0), Color(0.5, 0, 1)]
 const PIPE_POSITIONS = [Vector3(-112, -137, PI / 2), Vector3(112, -137, PI / 2), Vector3(-112, 137, -PI / 2), Vector3(112, 137, PI), Vector3(264, -64, PI), Vector3(264, 64, PI), Vector3(-264, -64, 0), Vector3(-264, 64, 0)]
 
 var jump_dir = Vector2(0, 0)
+var horizontal_vel = Vector2(0, 0)
 var vert_vel = 0
 var color: Color
 
@@ -21,6 +22,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if vert_vel < -START_JUMP_VEL:
+		velocity = horizontal_vel
 		velocity.y += vert_vel
 		vert_vel += GRAVITY * delta
 		if vert_vel >= -START_JUMP_VEL:
@@ -46,7 +48,7 @@ func start_jump(angle, jump_speed = JUMP_SPEED):
 		$Lemur.flip_h = false
 		$Eyes.flip_h = false
 	vert_vel = START_JUMP_VEL
-	velocity = jump_dir * jump_speed
+	horizontal_vel = jump_dir * jump_speed
 
 func bump_sfx():
 	$bump.play()
@@ -61,4 +63,4 @@ func collect(point_amount):
 
 func turn_around(body: Node2D) -> void:
 	var turn_direction = (body.global_position - global_position).normalized()
-	velocity = turn_direction * velocity.length()
+	horizontal_vel = turn_direction * horizontal_vel.length()
