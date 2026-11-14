@@ -91,6 +91,9 @@ func destroy_sun(sun):
 func destroy_world():
 	anim.play("gameover")
 	gameOverSfx.play()
+	for child in canvas.get_children():
+		if child.name != "black":
+			child.hide()
 
 # /// Enclosure /// #
 @onready var enclosureLine = $enclosureLine
