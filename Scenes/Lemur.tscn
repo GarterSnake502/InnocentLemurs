@@ -1,3 +1,17 @@
 [gd_scene format=3 uid="uid://bqne50sdca4xb"]
 
-[node name="Lemur" type="Node2D" unique_id=1909512106]
+[ext_resource type="Script" uid="uid://dw78t8soefosi" path="res://Scripts/lemur.gd" id="1_g0r4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6scny"]
+size = Vector2(16, 16)
+
+[node name="Lemur" type="CharacterBody2D" unique_id=361857280]
+script = ExtResource("1_g0r4j")
+
+[node name="Jump Timer" type="Timer" parent="." unique_id=656368909]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=581757138]
+position = Vector2(528, 375)
+shape = SubResource("RectangleShape2D_6scny")
+
+[connection signal="timeout" from="Jump Timer" to="." method="jump_random_angle"]
