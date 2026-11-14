@@ -1,38 +1,279 @@
 [gd_scene format=3 uid="uid://8r8hipyhi7if"]
 
+[ext_resource type="Script" uid="uid://bs5fpsylqkbs1" path="res://Scripts/normal_ending.gd" id="1_chsy7"]
 [ext_resource type="Texture2D" uid="uid://vuewutqd7x1v" path="res://Assets/Tiles/space.png" id="1_tprim"]
 [ext_resource type="Texture2D" uid="uid://cvy3eg1b3rk8s" path="res://Assets/spaceship.png" id="2_chsy7"]
-[ext_resource type="Texture2D" path="res://Assets/sun.png" id="3_2idwx"]
+[ext_resource type="Texture2D" uid="uid://6121t6cup750" path="res://Assets/sun.png" id="3_2idwx"]
+[ext_resource type="Texture2D" uid="uid://bwncq6agk80nb" path="res://Assets/Endings/twinkle.png" id="5_2idwx"]
+[ext_resource type="AudioStream" uid="uid://b8iopdly8fet5" path="res://Assets/rock_music.wav" id="6_c8kfn"]
+
+[sub_resource type="Animation" id="Animation_tprim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RocketSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.425, 2.425)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RocketSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.82728606]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RocketSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64.99999, 262)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RocketSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twinkle:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Twinkle:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2idwx"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_c8kfn"]
 resource_name = "fly"
+length = 7.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RocketSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.73),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.425, 2.425), Vector2(0.055, 0.055)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RocketSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.73),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.82728606, -0.33161256]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RocketSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.73),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-97.000015, 304), Vector2(198.375, 83.24)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RocketSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.74, 3.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Twinkle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.726823, 3.73, 4.0703707),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Twinkle:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.7548678, 3.8, 3.9, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.8, 4.9333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kgc0p"]
 _data = {
+&"RESET": SubResource("Animation_tprim"),
+&"fadeout": SubResource("Animation_2idwx"),
 &"fly": SubResource("Animation_c8kfn")
 }
 
-[node name="NormalEnding" type="Node2D" unique_id=511534450]
+[sub_resource type="LabelSettings" id="LabelSettings_c8kfn"]
+font_size = 48
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="NormalEnding" type="Control" unique_id=1725628134]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_chsy7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1919996095]
 libraries/ = SubResource("AnimationLibrary_kgc0p")
 autoplay = &"fly"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1354003002]
+layout_mode = 0
 offset_right = 354.0
 offset_bottom = 185.0
 texture = ExtResource("1_tprim")
 stretch_mode = 1
-
-[node name="RocketSprite" type="Sprite2D" parent="." unique_id=971932663]
-position = Vector2(-49, 82)
-texture = ExtResource("2_chsy7")
 
 [node name="SunSprite" type="Sprite2D" parent="." unique_id=1911017117]
 position = Vector2(207.00002, 80)
 scale = Vector2(6, 6)
 texture = ExtResource("3_2idwx")
 
+[node name="RocketSprite" type="Sprite2D" parent="." unique_id=971932663]
+position = Vector2(-64.99999, 262)
+rotation = -0.82728606
+scale = Vector2(2.425, 2.425)
+texture = ExtResource("2_chsy7")
+offset = Vector2(23.155, 0)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=763622355]
 position = Vector2(144, 81)
 zoom = Vector2(4, 4)
+
+[node name="Twinkle" type="Sprite2D" parent="." unique_id=504764825]
+position = Vector2(199, 83)
+texture = ExtResource("5_2idwx")
+hframes = 4
+frame = 1
+
+[node name="Label" type="Label" parent="." unique_id=1603141081]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 103.0
+offset_right = 1032.0
+offset_bottom = 310.0
+scale = Vector2(0.23, 0.23)
+theme_override_font_sizes/font_size = 64
+text = "Your lemur fleet was successful!
+The galaxy is saved...But you can do better.
+Go for a high score!"
+label_settings = SubResource("LabelSettings_c8kfn")
+horizontal_alignment = 1
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=865190050]
+stream = ExtResource("6_c8kfn")
+autoplay = true
