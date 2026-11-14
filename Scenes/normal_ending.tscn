@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bs5fpsylqkbs1" path="res://Scripts/normal_ending.gd" id="1_chsy7"]
 [ext_resource type="Texture2D" uid="uid://vuewutqd7x1v" path="res://Assets/Tiles/space.png" id="1_tprim"]
-[ext_resource type="Texture2D" uid="uid://cvy3eg1b3rk8s" path="res://Assets/spaceship.png" id="2_chsy7"]
-[ext_resource type="Texture2D" uid="uid://6121t6cup750" path="res://Assets/sun.png" id="3_2idwx"]
-[ext_resource type="Texture2D" uid="uid://bwncq6agk80nb" path="res://Assets/Endings/twinkle.png" id="5_2idwx"]
-[ext_resource type="AudioStream" uid="uid://b8iopdly8fet5" path="res://Assets/rock_music.wav" id="6_c8kfn"]
+[ext_resource type="Texture2D" uid="uid://de4kbtx0gdnko" path="res://Assets/spaceship.png" id="2_chsy7"]
+[ext_resource type="Texture2D" uid="uid://cr5mjbt3qc3lc" path="res://Assets/sun.png" id="3_2idwx"]
+[ext_resource type="Texture2D" uid="uid://b4nvaqhc20wjn" path="res://Assets/Endings/twinkle.png" id="5_2idwx"]
+[ext_resource type="AudioStream" uid="uid://dllvh3kuah4ia" path="res://Assets/rock_music.wav" id="6_c8kfn"]
+[ext_resource type="AudioStream" uid="uid://6cnotbqtbc44" path="res://Assets/explosion.wav" id="7_kgc0p"]
 
 [sub_resource type="Animation" id="Animation_tprim"]
 length = 0.001
@@ -208,6 +209,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("explosion")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kgc0p"]
 _data = {
@@ -277,3 +292,6 @@ horizontal_alignment = 1
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=865190050]
 stream = ExtResource("6_c8kfn")
 autoplay = true
+
+[node name="explosion" type="AudioStreamPlayer" parent="." unique_id=1406361195]
+stream = ExtResource("7_kgc0p")

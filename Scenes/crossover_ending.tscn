@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dm5h4gitcppqs"]
 
+[ext_resource type="Script" uid="uid://dv0btnyecx1v2" path="res://Scripts/telsa_ending.gd" id="1_slrbv"]
 [ext_resource type="Texture2D" uid="uid://vuewutqd7x1v" path="res://Assets/Tiles/space.png" id="1_tavmq"]
-[ext_resource type="Script" uid="uid://b10u14omrkxh4" path="res://Scripts/crossover_ending.gd" id="1_w0aeu"]
 [ext_resource type="AudioStream" uid="uid://d14ooduk414i7" path="res://Assets/crossover_ending.mp3" id="2_tavmq"]
 [ext_resource type="Texture2D" uid="uid://cr5mjbt3qc3lc" path="res://Assets/sun.png" id="2_vlpce"]
 [ext_resource type="Texture2D" uid="uid://d2dcwx5ddibhu" path="res://Assets/Endings/crossover-ending.png" id="2_wq3l2"]
@@ -163,6 +163,42 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tavmq"]
 resource_name = "crossover"
@@ -174,10 +210,10 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(24),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -273,11 +309,51 @@ tracks/7/keys = {
 "method": &"stop"
 }]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(24),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Label:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(24),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_w0aeu"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlpce"]
 _data = {
 &"RESET": SubResource("Animation_vlpce"),
-&"crossover": SubResource("Animation_tavmq")
+&"crossover": SubResource("Animation_tavmq"),
+&"fade": SubResource("Animation_w0aeu")
 }
 
 [sub_resource type="Curve" id="Curve_mwk7s"]
@@ -292,7 +368,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w0aeu")
+script = ExtResource("1_slrbv")
 
 [node name="bg" type="TextureRect" parent="." unique_id=320213109]
 modulate = Color(0.21950102, 0.21950102, 0.21950102, 1)
@@ -372,15 +448,6 @@ autoplay = &"flap"
 stream = ExtResource("2_tavmq")
 autoplay = true
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=245213155]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1274623403]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -445,3 +512,24 @@ color = Color(0.66399544, 0.4560212, 0, 1)
 hue_variation_min = -0.1
 hue_variation_max = 0.1
 hue_variation_curve = SubResource("Curve_mwk7s")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=245213155]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=398779514]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = 76.99999
+offset_right = 895.0
+offset_bottom = 121.99999
+scale = Vector2(0.275, 0.275)
+theme_override_font_sizes/font_size = 32
+text = "Press space to try again and get an even better ending ;)"
