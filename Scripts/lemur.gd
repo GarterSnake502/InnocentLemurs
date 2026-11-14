@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 func jump_random_angle():
 	start_jump(randf_range(0, 2 * PI))
 
-func start_jump(angle):
+func start_jump(angle, jump_speed = JUMP_SPEED):
 	jump_dir = Vector2.from_angle(angle)
 	vert_vel = START_JUMP_VEL
-	velocity = jump_dir * JUMP_SPEED
+	velocity = jump_dir * jump_speed
