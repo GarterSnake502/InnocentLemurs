@@ -14,7 +14,7 @@ var color: Color
 func _ready():
 	$"Jump Timer".wait_time = randf_range(1, 3)
 	$"Jump Timer".start()
-	color = COLORS[randi_range(0, 4)]
+	color = COLORS[randi_range(0, 3)]
 	$Lemur.self_modulate = color
 
 func _physics_process(delta: float) -> void:

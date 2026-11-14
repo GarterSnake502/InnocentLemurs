@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d0ljnvcc4o802" path="res://Scripts/factory.gd" id="1_xfy5e"]
 [ext_resource type="Texture2D" uid="uid://wskuw3dnwc8m" path="res://icon.svg" id="2_ix8fr"]
-[ext_resource type="AudioStream" uid="uid://bh5np5xqhbjmg" path="res://Assets/explosion.wav" id="3_j7huh"]
-[ext_resource type="AudioStream" uid="uid://c1oim11q1v3sr" path="res://Assets/gameover.wav" id="4_wu7b3"]
-[ext_resource type="AudioStream" uid="uid://bupu8e28wlhmk" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
+[ext_resource type="AudioStream" uid="uid://bqivbuqb6a7hd" path="res://Assets/explosion.wav" id="3_j7huh"]
+[ext_resource type="AudioStream" uid="uid://b8w4lp080ailk" path="res://Assets/gameover.wav" id="4_wu7b3"]
+[ext_resource type="AudioStream" uid="uid://c77f1ahnaual3" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
+[ext_resource type="PackedScene" uid="uid://bqne50sdca4xb" path="res://Scenes/Lemur.tscn" id="6_lr74p"]
 
 [sub_resource type="Animation" id="Animation_wu7b3"]
 length = 0.001
@@ -134,9 +135,25 @@ autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=964476370]
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=835746108]
-position = Vector2(24, 12)
-texture = ExtResource("2_ix8fr")
-
 [node name="anim" type="AnimationPlayer" parent="." unique_id=1933290887]
 libraries/ = SubResource("AnimationLibrary_wu7b3")
+
+[node name="Lemur" parent="." unique_id=361857280 instance=ExtResource("6_lr74p")]
+
+[node name="Lemur2" parent="." unique_id=942716802 instance=ExtResource("6_lr74p")]
+position = Vector2(-232, -93)
+
+[node name="Lemur3" parent="." unique_id=1306031625 instance=ExtResource("6_lr74p")]
+position = Vector2(63, -93)
+
+[node name="Lemur4" parent="." unique_id=168931132 instance=ExtResource("6_lr74p")]
+position = Vector2(-122, 58)
+
+[node name="Lemur5" parent="." unique_id=2011549364 instance=ExtResource("6_lr74p")]
+position = Vector2(229, 63)
+
+[node name="Lemur6" parent="." unique_id=519510744 instance=ExtResource("6_lr74p")]
+position = Vector2(456, -13)
+
+[node name="Lemur7" parent="." unique_id=176859148 instance=ExtResource("6_lr74p")]
+position = Vector2(345, -113)

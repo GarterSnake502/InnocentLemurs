@@ -79,9 +79,10 @@ func check_diversity():
 	for lemur in get_tree().get_nodes_in_group("lemurs"):
 		if Geometry2D.is_point_in_polygon(enclosureLine.to_local(lemur.global_position), poly):
 			enclosedLemurs.append(lemur)
+	print(enclosedLemurs)
 	var enclosedAmount = len(enclosedLemurs)
 	var enclosedColor = Color(0,0,0)
-	var diverse = true
+	var diverse = false
 	for body in enclosedLemurs:
 		if enclosedColor == Color(0,0,0):
 			enclosedColor = body.color
