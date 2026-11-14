@@ -11,10 +11,45 @@ var suns_remaining = 3
 @onready var sun1 = $CanvasLayer/sun1
 @onready var sun2 = $CanvasLayer/sun2
 @onready var sun3 = $CanvasLayer/sun3
+@onready var nextWaveTime = $CanvasLayer/nextWaveTime
 
 @onready var explosionSfx = $explosion
 @onready var gameOverSfx = $gameover
 @onready var anim = $anim
+
+func _process(delta):
+	_process_bumping(delta)
+	_process_enclosure(delta)
+	_process_spawn(delta)
+
+# /// SPAWN /// #
+var time_remaining = 10.0
+var spawn_interval = 1
+var spawn_time_remaining = spawn_interval
+const MAX_TIME = 10.0
+func _process_spawn(delta):
+	# spawn in pipes at intervals
+	if spawn_time_remaining <= 0:
+		spawn_lemur()
+		spawn_time_remaining = spawn_interval
+	# damage if enough time elapses
+	spawn_time_remaining -= delta
+	time_remaining -= delta
+	nextWaveTime.value = time_remaining
+	if time_remaining <= 0:
+		suns_remaining -= 1
+		update_ui()
+		time_remaining = MAX_TIME
+
+func spawn_lemur():
+	var lemur = load("res://Scenes/Lemur.tscn").instantiate()
+	var spawnNum = randi_range(1, 8)
+	var spawnPoint = get_node("spawnPositions/" + str(spawnNum))
+	lemur.global_position = spawnPoint.global_position
+	add_child(lemur)
+
+func restore_spawn_time():
+	time_remaining = MAX_TIME
 
 # /// UI /// #
 func update_ui():
@@ -30,6 +65,7 @@ func update_ui():
 		destroy_sun(sun1)
 	if suns_remaining <= 0:
 		destroy_world()
+	
 
 func destroy_sun(sun):
 	sun.texture = load("res://Assets/UI/sun-dead.png")
@@ -69,6 +105,11 @@ func start_bumper():
 	bumper.monitoring = true
 	bumping = true
 
+func _process_bumping(delta):
+	if bumping:
+		var mouse_pos = get_global_mouse_position()
+		bumper.position = mouse_pos
+
 const BUMP_STRENGTH = 150
 func bump(body):
 	if body.is_in_group("lemurs"):
@@ -83,6 +124,11 @@ func start_enclosure():
 	enclosing = true
 	enclosureLine.clear_points()
 
+func _process_enclosure(delta):
+	if enclosing:
+		var mouse_pos = get_global_mouse_position()
+		add_enclosure_point(mouse_pos)
+
 func stop_enclosure():
 	enclosing = false
 	check_diversity()
@@ -90,15 +136,7 @@ func stop_enclosure():
 func add_enclosure_point(point):
 	enclosureLine.add_point(point)
 
-func _process(delta):
-	if bumping:
-		var mouse_pos = get_global_mouse_position()
-		bumper.position = mouse_pos
-	if enclosing:
-		var mouse_pos = get_global_mouse_position()
-		add_enclosure_point(mouse_pos)
-
-const MIN_LEMURS = 6
+const MIN_LEMURS = 3
 func check_diversity():
 	var poly = enclosureLine.points
 	if poly.size() < 3:
@@ -121,11 +159,15 @@ func check_diversity():
 		print("DIVERSITY ALERT!!")
 		suns_remaining -= 1
 		update_ui()
-	elif enclosedAmount > MIN_LEMURS:
+	elif enclosedAmount >= MIN_LEMURS:
 		var pts = get_fib_pts(enclosedAmount)
 		points += pts * 100
+		for body in enclosedLemurs:
+			body.queue_free() # TODO: animation
+		update_ui()
+		restore_spawn_time()
 
-func get_fib_pts(value: int, start: int = 6) -> int:
+func get_fib_pts(value: int, start: int = MIN_LEMURS) -> int:
 	if value < start:
 		return 0
 	return fib(value - start + 1)
