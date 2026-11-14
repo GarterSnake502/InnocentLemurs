@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://c77f1ahnaual3" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
 [ext_resource type="PackedScene" uid="uid://bqne50sdca4xb" path="res://Scenes/Lemur.tscn" id="6_lr74p"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_82hr6"]
+radius = 28.284271
+
 [sub_resource type="Animation" id="Animation_wu7b3"]
 length = 0.001
 tracks/0/type = "value"
@@ -86,6 +89,17 @@ _data = {
 
 [node name="Factory" type="Node2D" unique_id=531250293]
 script = ExtResource("1_xfy5e")
+
+[node name="bumperArea" type="Area2D" parent="." unique_id=95613558 groups=["bumper"]]
+monitoring = false
+monitorable = false
+
+[node name="Icon" type="Sprite2D" parent="bumperArea" unique_id=1981314365]
+scale = Vector2(0.315, 0.315)
+texture = ExtResource("2_ix8fr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bumperArea" unique_id=846237808]
+shape = SubResource("CircleShape2D_82hr6")
 
 [node name="enclosureLine" type="Line2D" parent="." unique_id=326436758]
 closed = true
