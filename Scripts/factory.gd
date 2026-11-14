@@ -34,12 +34,14 @@ func _process(delta):
 	_process_spawn(delta)
 
 # /// SPAWN /// #
+const MAX_LEMUR_COUNT = 30
 var spawn_interval = 1
 var spawn_time_remaining = spawn_interval
 func _process_spawn(delta):
 	# spawn in pipes at intervals
 	if spawn_time_remaining <= 0:
-		spawn_lemur()
+		if get_tree().get_nodes_in_group("lemurs").size() < MAX_LEMUR_COUNT:
+			spawn_lemur()
 		spawn_time_remaining = spawn_interval
 	# damage if enough time elapses
 	spawn_time_remaining -= delta
@@ -97,6 +99,7 @@ func destroy_world():
 
 # /// Enclosure /// #
 @onready var enclosureLine = $enclosureLine
+@onready var enclosureLineAnim = $enclosureLine/anim
 var enclosing = false
 var bumping = false
 func _input(event):
@@ -134,6 +137,8 @@ func stop_bumper():
 	bumping = false
 
 func start_enclosure():
+	enclosureLineAnim.stop()
+	enclosureLine.modulate = Color(1,1,1)
 	enclosing = true
 	enclosureLine.clear_points()
 
@@ -145,6 +150,7 @@ func _process_enclosure(delta):
 func stop_enclosure():
 	enclosing = false
 	check_diversity()
+	enclosureLineAnim.play("fade")
 
 func add_enclosure_point(point):
 	enclosureLine.add_point(point)
@@ -176,9 +182,13 @@ func check_diversity():
 		var pts = get_fib_pts(enclosedAmount)
 		points += pts * 100
 		for body in enclosedLemurs:
-			body.collect()
+			body.collect(pts)
 		update_ui()
 		restore_spawn_time()
+		var textFade = load("res://Scenes/fadeText.tscn").instantiate()
+		textFade.global_position = get_global_mouse_position()
+		textFade.text = "+" + str(pts * 100)
+		add_child(textFade)
 
 func get_fib_pts(value: int, start: int = MIN_LEMURS) -> int:
 	if value < start:

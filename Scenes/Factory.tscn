@@ -11,9 +11,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_82hr6"]
 radius = 28.284271
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52kl0"]
-bg_color = Color(0.49424833, 0.7476751, 1, 1)
-
 [sub_resource type="Animation" id="Animation_wu7b3"]
 length = 0.001
 tracks/0/type = "value"
@@ -40,20 +37,57 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("enclosureLine:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_a5v3u"]
-resource_name = "gameover"
+[sub_resource type="Animation" id="Animation_4sda8"]
+resource_name = "fade"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/path = NodePath("enclosureLine:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.16666669, 0.23333333, 0.3, 0.36666667, 0.43333337, 0.5, 0.56666666, 0.6333333, 0.7, 0.76666665),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu7b3"]
+_data = {
+&"RESET": SubResource("Animation_wu7b3"),
+&"fade": SubResource("Animation_4sda8")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52kl0"]
+bg_color = Color(0.49424833, 0.7476751, 1, 1)
+
+[sub_resource type="Animation" id="Animation_4mmdj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -62,36 +96,64 @@ tracks/1/path = NodePath("CanvasLayer/black:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.75010735),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ekojf"]
+resource_name = "gameover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.16666667, 0.23333333, 0.3, 0.36666667, 0.43333337, 0.5, 0.56666666, 0.6333333, 0.70000005, 0.76666665, 0.8333333, 0.9, 0.9666667, 1.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/black:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_j7huh"]
+[sub_resource type="Animation" id="Animation_52kl0"]
 resource_name = "shake"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.16666669, 0.23333333, 0.26666668),
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.16666667, 0.23333333, 0.26666668),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu7b3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mmdj"]
 _data = {
-&"RESET": SubResource("Animation_wu7b3"),
-&"gameover": SubResource("Animation_a5v3u"),
-&"shake": SubResource("Animation_j7huh")
+&"RESET": SubResource("Animation_4mmdj"),
+&"gameover": SubResource("Animation_ekojf"),
+&"shake": SubResource("Animation_52kl0")
 }
 
 [node name="Factory" type="Node2D" unique_id=531250293]
+position = Vector2(0, 2)
 script = ExtResource("1_xfy5e")
 
 [node name="Ground Layer" type="TileMapLayer" parent="." unique_id=1788086736]
@@ -116,6 +178,10 @@ shape = SubResource("CircleShape2D_82hr6")
 closed = true
 width = 5.0
 default_color = Color(0.9999997, 0.7994698, 0.15145713, 1)
+
+[node name="anim" type="AnimationPlayer" parent="enclosureLine" unique_id=858630169]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_wu7b3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1711277492]
 
@@ -188,13 +254,13 @@ autoplay = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=964476370]
 zoom = Vector2(2, 2)
 
-[node name="anim" type="AnimationPlayer" parent="." unique_id=1933290887]
-libraries/ = SubResource("AnimationLibrary_wu7b3")
-
 [node name="Lemurs" type="Node2D" parent="." unique_id=1067159161]
 
 [node name="Pipe Layer" type="TileMapLayer" parent="." unique_id=321329841]
 tile_map_data = PackedByteArray("AAAQAAQABQACAAAABAAQAAMABQACAAAABgARAAQABQADAAAAAwASAAQABQADAAAAAwARAAMABQADAAAABAASAAMABQADAAAABAAQAPz/BQACAAAABAAQAPv/BQACAAAABgARAPz/BQADAAAAAwASAPz/BQADAAAAAwARAPv/BQADAAAABAASAPv/BQADAAAABADt//v/BQADAAAABADu//v/BQADAAAABADt//z/BQADAAAAAwDu//z/BQADAAAAAwDv//v/BQACAAAABwDv//z/BQACAAAABQDt/wMABQADAAAABADu/wMABQADAAAABADt/wQABQADAAAAAwDu/wQABQADAAAAAwDv/wQABQACAAAABQDv/wMABQACAAAABwD4/wkABQADAAAAAQD4/woABQADAAAAAQD5/wkABQADAAAAAAD5/woABQADAAAAAAD5/wgABQACAAAAAAD4/wgABQACAAAAAQAGAAgABQACAAAAAQAHAAgABQACAAAAAAAHAAkABQADAAAAAAAHAAoABQADAAAAAAAGAAkABQADAAAAAQAGAAoABQADAAAAAQD4//X/BQADAAAAAQD4//b/BQADAAAAAQD5//X/BQADAAAAAAD5//b/BQADAAAAAAD4//f/BQACAAAAAwD5//f/BQACAAAAAgAHAPX/BQADAAAAAAAHAPb/BQADAAAAAAAGAPX/BQADAAAAAQAGAPb/BQADAAAAAQAHAPf/BQACAAAAAgAGAPf/BQACAAAAAwA=")
 tile_set = ExtResource("7_4sda8")
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=1693390102]
+libraries/ = SubResource("AnimationLibrary_4mmdj")
 
 [connection signal="body_entered" from="bumperArea" to="." method="bump"]
