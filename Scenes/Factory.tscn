@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d0ljnvcc4o802" path="res://Scripts/factory.gd" id="1_xfy5e"]
 [ext_resource type="Texture2D" uid="uid://wskuw3dnwc8m" path="res://icon.svg" id="2_ix8fr"]
 [ext_resource type="AudioStream" uid="uid://bh5np5xqhbjmg" path="res://Assets/explosion.wav" id="3_j7huh"]
+[ext_resource type="Texture2D" uid="uid://c15il4ra4ui3h" path="res://Assets/UI/sun-happy.png" id="4_4mmdj"]
 [ext_resource type="AudioStream" uid="uid://b8w4lp080ailk" path="res://Assets/gameover.wav" id="4_wu7b3"]
 [ext_resource type="AudioStream" uid="uid://bupu8e28wlhmk" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
 [ext_resource type="PackedScene" uid="uid://bqne50sdca4xb" path="res://Scenes/Lemur.tscn" id="6_lr74p"]
@@ -122,18 +123,18 @@ text = "Points: "
 
 [node name="sun1" type="Sprite2D" parent="CanvasLayer" unique_id=1311740987]
 position = Vector2(59, 98)
-scale = Vector2(0.545, 0.545)
-texture = ExtResource("2_ix8fr")
+scale = Vector2(2.21, 2.21)
+texture = ExtResource("4_4mmdj")
 
 [node name="sun2" type="Sprite2D" parent="CanvasLayer" unique_id=115554256]
 position = Vector2(146, 98)
-scale = Vector2(0.545, 0.545)
-texture = ExtResource("2_ix8fr")
+scale = Vector2(2.21, 2.21)
+texture = ExtResource("4_4mmdj")
 
 [node name="sun3" type="Sprite2D" parent="CanvasLayer" unique_id=746917767]
 position = Vector2(235, 98)
-scale = Vector2(0.545, 0.545)
-texture = ExtResource("2_ix8fr")
+scale = Vector2(2.21, 2.21)
+texture = ExtResource("4_4mmdj")
 
 [node name="black" type="ColorRect" parent="CanvasLayer" unique_id=907466740]
 anchors_preset = 15

@@ -21,22 +21,27 @@ func update_ui():
 	ptsLabel.text = "Points: " + str(points)
 	if suns_remaining < 3 and sun3.visible:
 		destroy_sun(sun3)
+		sun2.texture = load("res://Assets/UI/sun-nervous-1.png")
+		sun1.texture = load("res://Assets/UI/sun-nervous-1.png")
 	if suns_remaining < 2 and sun2.visible:
 		destroy_sun(sun2)
+		sun1.texture = load("res://Assets/UI/sun-nervous-2.png")
 	if suns_remaining < 1 and sun1.visible:
 		destroy_sun(sun1)
 	if suns_remaining <= 0:
 		destroy_world()
 
 func destroy_sun(sun):
+	sun.texture = load("res://Assets/UI/sun-dead.png")
 	explosionSfx.pitch_scale = randf_range(0.9, 1.1)
 	explosionSfx.play()
-	sun.hide()
 	var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
 	explosion.global_position = sun.global_position
 	explosion.emitting = true
 	canvas.add_child(explosion)
 	anim.play("shake")
+	await get_tree().create_timer(1.5).timeout
+	sun.hide()
 
 func destroy_world():
 	anim.play("gameover")
