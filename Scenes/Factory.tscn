@@ -99,6 +99,7 @@ tile_map_data = PackedByteArray("AADv//f/BQAAAAAAAADv//j/BQABAAAAAADv//n/BQABAAA
 tile_set = ExtResource("7_4sda8")
 
 [node name="bumperArea" type="Area2D" parent="." unique_id=95613558 groups=["bumper"]]
+visible = false
 collision_layer = 4
 collision_mask = 2
 monitoring = false
