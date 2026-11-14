@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://b0jcxap4px1xb"]
+[gd_scene format=3 uid="uid://dhe1gy7jp567j"]
 
-[ext_resource type="Script" uid="uid://cqusb7mqe2gof" path="res://Scripts/intro.gd" id="1_b226h"]
-[ext_resource type="AudioStream" uid="uid://d4mcqoscykx43" path="res://Assets/heartbeat.mp3" id="2_duh1u"]
-[ext_resource type="Shader" uid="uid://cjxgj3nu6rr8b" path="res://Assets/intro.gdshader" id="3_alxvg"]
-[ext_resource type="AudioStream" uid="uid://cfa5u66gsd0ji" path="res://Assets/rock_music.wav" id="4_geirw"]
+[ext_resource type="Script" uid="uid://b8w2cf7vhio7l" path="res://Scripts/intro.gd" id="1_b226h"]
+[ext_resource type="AudioStream" uid="uid://dfuko7x4qegag" path="res://Assets/heartbeat.mp3" id="2_duh1u"]
+[ext_resource type="Shader" uid="uid://r2aflo2o5unq" path="res://Assets/intro.gdshader" id="3_alxvg"]
+[ext_resource type="AudioStream" uid="uid://b7fwmnqwudbyk" path="res://Assets/rock_music.wav" id="4_geirw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_geirw"]
 shader = ExtResource("3_alxvg")

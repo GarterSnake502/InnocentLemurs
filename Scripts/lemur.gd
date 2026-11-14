@@ -47,3 +47,17 @@ func start_jump(angle, jump_speed = JUMP_SPEED):
 		$Eyes.flip_h = false
 	vert_vel = START_JUMP_VEL
 	velocity = jump_dir * jump_speed
+
+func bump_sfx():
+	$bump.play()
+
+func collect():
+	set_physics_process(false)
+	$AnimationPlayer.play("die")
+	$collect.play()
+	await $AnimationPlayer.animation_finished
+	queue_free()
+
+func turn_around(body: Node2D) -> void:
+	var turn_direction = (body.global_position - global_position).normalized()
+	velocity = turn_direction * velocity.length()

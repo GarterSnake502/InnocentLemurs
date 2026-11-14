@@ -9,7 +9,7 @@ var sayings = ["The galaxy is under siege.\n\n\n\n\n\n\n[center][Press SPACE to 
 "There is only one problem with this plan.",
 "Lemurs of different colors do not get along.",
 "[shake]Do not, under any circumstances, lasso lemurs of different colors together.[/shake]",
-"If you accidentally lasso multi-colored lemurs three times, or take too long to send a lemur crew, the sun will immediately explode and everyone you love you die.",
+"If you accidentally lasso multi-colored lemurs three times, or take too long to send a lemur crew, the sun will immediately explode and everyone you love will die.",
 "Nikola Tesla is counting on you.",
 "And, well, the entire galaxy.",
 "Have fun :)"

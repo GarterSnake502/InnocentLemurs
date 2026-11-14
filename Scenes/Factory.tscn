@@ -12,7 +12,7 @@
 radius = 28.284271
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52kl0"]
-bg_color = Color(0.15929937, 0.61722416, 0.9999998, 1)
+bg_color = Color(0.49424833, 0.7476751, 1, 1)
 
 [sub_resource type="Animation" id="Animation_wu7b3"]
 length = 0.001
@@ -124,6 +124,23 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 32
 text = "Points: 0"
+
+[node name="Time" type="Label" parent="CanvasLayer" unique_id=739558856]
+offset_left = 478.0
+offset_top = 5.0
+offset_right = 834.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 32
+text = "Time until next impact:"
+
+[node name="TerroristMisslesRemaining" type="Label" parent="CanvasLayer" unique_id=832018773]
+offset_left = 668.0
+offset_top = 52.0
+offset_right = 1145.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 32
+text = "Terrorist missles remaining: 30"
+horizontal_alignment = 2
 
 [node name="sun1" type="Sprite2D" parent="CanvasLayer" unique_id=1311740987]
 position = Vector2(59, 98)

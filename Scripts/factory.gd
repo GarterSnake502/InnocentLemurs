@@ -12,13 +12,16 @@ var suns_remaining = 3
 @onready var sun2 = $CanvasLayer/sun2
 @onready var sun3 = $CanvasLayer/sun3
 @onready var nextWaveTime = $CanvasLayer/nextWaveTime
+@onready var terroristMisslesRemainingLabel = $CanvasLayer/TerroristMisslesRemaining
 
 @onready var explosionSfx = $explosion
 @onready var gameOverSfx = $gameover
 @onready var anim = $anim
 
 const MAX_TIME = 18.0
+const MAX_TERRORIST_MISSLES = 30
 var time_remaining = MAX_TIME
+var terrorist_missles = MAX_TERRORIST_MISSLES
 
 func _ready():
 	for i in range(0, 8):
@@ -45,14 +48,17 @@ func _process_spawn(delta):
 	if time_remaining <= 0:
 		suns_remaining -= 1
 		update_ui()
-		time_remaining = MAX_TIME
+		restore_spawn_time()
 
 func spawn_lemur():
 	var lemur = load("res://Scenes/Lemur.tscn").instantiate()
 	$Lemurs.add_child(lemur)
 
 func restore_spawn_time():
+	terrorist_missles -= 1
+	terroristMisslesRemainingLabel.text = "Terrorist missles remaining: " + str(terrorist_missles)
 	time_remaining = MAX_TIME
+	print("REsot")
 
 # /// UI /// #
 func update_ui():
@@ -117,6 +123,7 @@ const BUMP_STRENGTH = 150
 func bump(body):
 	if body.is_in_group("lemurs"):
 		body.start_jump(bumper.global_position.angle_to_point(body.global_position), BUMP_STRENGTH)
+		body.bump_sfx()
 
 func stop_bumper():
 	bumper.hide()
@@ -166,7 +173,7 @@ func check_diversity():
 		var pts = get_fib_pts(enclosedAmount)
 		points += pts * 100
 		for body in enclosedLemurs:
-			body.queue_free() # TODO: animation
+			body.collect()
 		update_ui()
 		restore_spawn_time()
 
