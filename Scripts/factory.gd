@@ -91,10 +91,10 @@ func destroy_sun(sun):
 	sun.texture = load("res://Assets/UI/sun-dead.png")
 	explosionSfx.pitch_scale = randf_range(0.9, 1.1)
 	explosionSfx.play()
-	#var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
-	#explosion.global_position = sun.global_position
-	#explosion.emitting = true
-	#canvas.add_child(explosion)
+	var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
+	explosion.global_position = sun.global_position
+	explosion.emitting = true
+	canvas.add_child(explosion)
 	anim.play("shake")
 	await get_tree().create_timer(1.5).timeout
 	sun.hide()
@@ -142,6 +142,7 @@ func bump(body):
 	if body.is_in_group("lemurs"):
 		body.start_jump(bumper.global_position.angle_to_point(body.global_position), BUMP_STRENGTH)
 		body.bump_sfx()
+		$Bouncy.play()
 
 func stop_bumper():
 	bumper.hide()
@@ -176,7 +177,6 @@ func check_diversity():
 	for lemur in get_tree().get_nodes_in_group("lemurs"):
 		if Geometry2D.is_point_in_polygon(enclosureLine.to_local(lemur.global_position), poly):
 			enclosedLemurs.append(lemur)
-	print(enclosedLemurs)
 	var enclosedAmount = len(enclosedLemurs)
 	var enclosedColor = Color(0,0,0)
 	var diverse = false
@@ -187,13 +187,13 @@ func check_diversity():
 			if body.color != enclosedColor:
 				diverse = true
 	if diverse:
-		print("DIVERSITY ALERT!!")
 		suns_remaining -= 1
 		update_ui()
 	elif enclosedAmount >= MIN_LEMURS:
-		var pts = 1 + (enclosedAmount - MIN_LEMURS)
-		#var pts = get_fib_pts(enclosedAmount)
+		var pts = get_fib_pts(enclosedAmount)
 		points += pts * 100
+		$"Lasso Fanfare".pitch_scale = 1 + (pts - 1) * 0.1
+		$"Lasso Fanfare".play()
 		for body in enclosedLemurs:
 			body.collect(pts)
 		update_ui()
@@ -206,7 +206,7 @@ func check_diversity():
 func get_fib_pts(value: int, start: int = MIN_LEMURS) -> int:
 	if value < start:
 		return 0
-	return fib(value - start + 1)
+	return fib(value - start + 2)
 
 func fib(n: int) -> int:
 	var a = 1
