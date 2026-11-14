@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bqne50sdca4xb"]
 
 [ext_resource type="Script" uid="uid://dw78t8soefosi" path="res://Scripts/lemur.gd" id="1_g0r4j"]
-[ext_resource type="Texture2D" uid="uid://d3oyd7sn7mkl3" path="res://Assets/idle.png" id="2_5hki8"]
-[ext_resource type="Texture2D" uid="uid://f1aejabh683q" path="res://Assets/eyes.png" id="3_dhw11"]
+[ext_resource type="Texture2D" uid="uid://cuecqwgb020rq" path="res://Assets/idle.png" id="2_5hki8"]
+[ext_resource type="Texture2D" uid="uid://bj1xo0enq8jc" path="res://Assets/eyes.png" id="3_dhw11"]
 [ext_resource type="AudioStream" uid="uid://chj4kpijhqdee" path="res://Assets/collect.wav" id="4_dhw11"]
 [ext_resource type="AudioStream" uid="uid://sqiibrur2a03" path="res://Assets/bumped_moth.wav" id="5_uu4b4"]
 
@@ -47,6 +47,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Eyes:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_5hki8"]
 resource_name = "die"
@@ -58,6 +70,18 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Eyes:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.28, 0.63),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
