@@ -33,9 +33,6 @@ func _process(delta):
 	_process_enclosure(delta)
 	_process_spawn(delta)
 
-func decide_ending():
-	pass
-
 # /// SPAWN /// #
 const MAX_LEMUR_COUNT = 30
 var spawn_interval = 1
@@ -66,7 +63,7 @@ func restore_spawn_time():
 	if terrorist_missles <= 0:
 		anim.play("win")
 		await anim.animation_finished
-		decide_ending()
+		get_tree().change_scene_to_file("res://Scenes/normal_ending.tscn")
 
 # /// UI /// #
 func update_ui():
@@ -102,6 +99,8 @@ func destroy_world():
 	for child in canvas.get_children():
 		if child.name != "black":
 			child.hide()
+	await anim.animation_finished
+	get_tree().change_scene_to_file("res://Scenes/bad_ending.tscn")
 
 # /// Enclosure /// #
 @onready var enclosureLine = $enclosureLine
