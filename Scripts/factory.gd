@@ -3,6 +3,7 @@ extends Node2D
 var points = 0
 var suns_remaining = 3
 
+@onready var bumper = $bumperArea
 @onready var cam = $Camera2D
 
 @onready var canvas = $CanvasLayer
@@ -44,6 +45,7 @@ func destroy_world():
 # /// Enclosure /// #
 @onready var enclosureLine = $enclosureLine
 var enclosing = false
+var bumping = false
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
@@ -52,7 +54,25 @@ func _input(event):
 			else:
 				stop_enclosure()
 		if event.button_index == MOUSE_BUTTON_RIGHT:
-			check_diversity()
+			if event.pressed:
+				start_bumper()
+			else:
+				stop_bumper()
+
+func start_bumper():
+	bumper.show()
+	bumper.monitoring = true
+	bumping = true
+
+const BUMP_STRENGTH = 150
+func bump(body):
+	if body.is_in_group("lemurs"):
+		body.start_jump(bumper.global_position.angle_to_point(body.global_position), BUMP_STRENGTH)
+
+func stop_bumper():
+	bumper.hide()
+	bumper.monitoring = false
+	bumping = false
 
 func start_enclosure():
 	enclosing = true
@@ -66,6 +86,9 @@ func add_enclosure_point(point):
 	enclosureLine.add_point(point)
 
 func _process(delta):
+	if bumping:
+		var mouse_pos = get_global_mouse_position()
+		bumper.position = mouse_pos
 	if enclosing:
 		var mouse_pos = get_global_mouse_position()
 		add_enclosure_point(mouse_pos)
