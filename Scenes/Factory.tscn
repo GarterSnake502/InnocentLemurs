@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://csk5vs07g0cnp"]
 
 [ext_resource type="Script" uid="uid://d0ljnvcc4o802" path="res://Scripts/factory.gd" id="1_xfy5e"]
-[ext_resource type="Texture2D" uid="uid://dkmeer5iqrp13" path="res://Assets/life-presever.png" id="3_52kl0"]
-[ext_resource type="AudioStream" uid="uid://cl0dycnpyayhj" path="res://Assets/explosion.wav" id="3_j7huh"]
+[ext_resource type="Texture2D" uid="uid://bhmk1ci0taow4" path="res://Assets/life-presever.png" id="3_52kl0"]
+[ext_resource type="AudioStream" uid="uid://dcd3oa6iaov73" path="res://Assets/explosion.wav" id="3_j7huh"]
 [ext_resource type="Texture2D" uid="uid://c15il4ra4ui3h" path="res://Assets/UI/sun-happy.png" id="4_4mmdj"]
-[ext_resource type="AudioStream" uid="uid://hxidv4weulmk" path="res://Assets/gameover.wav" id="4_wu7b3"]
-[ext_resource type="AudioStream" uid="uid://c1nn17ut8hgdl" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
+[ext_resource type="AudioStream" uid="uid://wsi88dlk6bh7" path="res://Assets/gameover.wav" id="4_wu7b3"]
+[ext_resource type="AudioStream" uid="uid://ba4poskpm8y02" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
 [ext_resource type="TileSet" uid="uid://irkcgmmrcg2x" path="res://Assets/factory_tileset.tres" id="7_4sda8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82hr6"]
@@ -145,11 +145,27 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -55), Vector2(0, 55), Vector2(0, -55), Vector2(0, 55), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_nvvnw"]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/black:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4mmdj"]
 _data = {
 &"RESET": SubResource("Animation_4mmdj"),
 &"gameover": SubResource("Animation_ekojf"),
-&"shake": SubResource("Animation_52kl0")
+&"shake": SubResource("Animation_52kl0"),
+&"win": SubResource("Animation_nvvnw")
 }
 
 [node name="Factory" type="Node2D" unique_id=531250293]

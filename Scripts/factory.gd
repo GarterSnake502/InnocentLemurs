@@ -33,6 +33,9 @@ func _process(delta):
 	_process_enclosure(delta)
 	_process_spawn(delta)
 
+func decide_ending():
+	pass
+
 # /// SPAWN /// #
 const MAX_LEMUR_COUNT = 30
 var spawn_interval = 1
@@ -60,7 +63,10 @@ func restore_spawn_time():
 	terrorist_missles -= 1
 	terroristMisslesRemainingLabel.text = "Terrorist missles remaining: " + str(terrorist_missles)
 	time_remaining = MAX_TIME
-	print("REsot")
+	if terrorist_missles <= 0:
+		anim.play("win")
+		await anim.animation_finished
+		decide_ending()
 
 # /// UI /// #
 func update_ui():
