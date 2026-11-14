@@ -1,3 +1,113 @@
-[gd_scene format=3 uid="uid://b6osdr5sw18n3"]
+[gd_scene format=3 uid="uid://dm5h4gitcppqs"]
 
-[node name="CrossoverEnding" type="Node2D" unique_id=2092166838]
+[ext_resource type="Texture2D" uid="uid://vuewutqd7x1v" path="res://Assets/Tiles/space.png" id="1_tavmq"]
+[ext_resource type="AudioStream" uid="uid://b48nmx7fmhffw" path="res://Assets/crossover_ending.mp3" id="2_tavmq"]
+[ext_resource type="Texture2D" uid="uid://6121t6cup750" path="res://Assets/sun.png" id="2_vlpce"]
+
+[sub_resource type="Animation" id="Animation_vlpce"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tavmq"]
+resource_name = "crossover"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlpce"]
+_data = {
+&"RESET": SubResource("Animation_vlpce"),
+&"crossover": SubResource("Animation_tavmq")
+}
+
+[node name="CrossoverEnding" type="Control" unique_id=80411184]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="TextureRect" parent="." unique_id=320213109]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 244.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tavmq")
+stretch_mode = 1
+
+[node name="sun" type="Sprite2D" parent="." unique_id=687001562]
+position = Vector2(42, 39.999996)
+scale = Vector2(2.055, 2.055)
+texture = ExtResource("2_vlpce")
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=238370470]
+stream = ExtResource("2_tavmq")
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=245213155]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1274623403]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 39.0
+offset_top = 188.0
+offset_right = 1094.0
+offset_bottom = 583.0
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+bbcode_enabled = true
+text = "I never thought I'd see this day..."
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=46927967]
+position = Vector2(145, 82)
+zoom = Vector2(4, 4)
+
+[node name="anim" type="AnimationPlayer" parent="." unique_id=981886951]
+libraries/ = SubResource("AnimationLibrary_vlpce")
+autoplay = &"crossover"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1388621794]
+amount = 100
+lifetime = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 200)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 50.0
+scale_amount_max = 4.0
+color = Color(4.9574674e-06, 0.6858901, 0.35514536, 1)
