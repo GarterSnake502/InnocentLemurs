@@ -1,9 +1,72 @@
 [gd_scene format=3 uid="uid://bqne50sdca4xb"]
 
 [ext_resource type="Script" uid="uid://dw78t8soefosi" path="res://Scripts/lemur.gd" id="1_g0r4j"]
+[ext_resource type="Texture2D" uid="uid://cuecqwgb020rq" path="res://Assets/idle.png" id="2_5hki8"]
+[ext_resource type="Texture2D" uid="uid://bj1xo0enq8jc" path="res://Assets/eyes.png" id="3_dhw11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6scny"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_uu4b4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lemur:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Eyes:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_alvc0"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lemur:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Eyes:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xanjr"]
+_data = {
+&"RESET": SubResource("Animation_uu4b4"),
+&"idle": SubResource("Animation_alvc0")
+}
 
 [node name="Lemur" type="CharacterBody2D" unique_id=361857280]
 script = ExtResource("1_g0r4j")
@@ -11,7 +74,17 @@ script = ExtResource("1_g0r4j")
 [node name="Jump Timer" type="Timer" parent="." unique_id=656368909]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=581757138]
-position = Vector2(528, 375)
 shape = SubResource("RectangleShape2D_6scny")
+
+[node name="Lemur" type="Sprite2D" parent="." unique_id=1652577680]
+texture = ExtResource("2_5hki8")
+hframes = 2
+
+[node name="Eyes" type="Sprite2D" parent="." unique_id=1145331034]
+texture = ExtResource("3_dhw11")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1744297539]
+libraries/ = SubResource("AnimationLibrary_xanjr")
 
 [connection signal="timeout" from="Jump Timer" to="." method="jump_random_angle"]
