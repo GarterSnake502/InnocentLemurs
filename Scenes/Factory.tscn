@@ -12,6 +12,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_82hr6"]
 radius = 28.284271
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52kl0"]
+bg_color = Color(0.15929937, 0.61722416, 0.9999998, 1)
+
 [sub_resource type="Animation" id="Animation_wu7b3"]
 length = 0.001
 tracks/0/type = "value"
@@ -120,7 +123,7 @@ default_color = Color(0.9999997, 0.7994698, 0.15145713, 1)
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 32
-text = "Points: "
+text = "Points: 0"
 
 [node name="sun1" type="Sprite2D" parent="CanvasLayer" unique_id=1311740987]
 position = Vector2(59, 98)
@@ -144,6 +147,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
+
+[node name="nextWaveTime" type="ProgressBar" parent="CanvasLayer" unique_id=2132743584]
+offset_left = 846.0
+offset_top = 14.0
+offset_right = 1144.0
+offset_bottom = 41.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_52kl0")
+max_value = 10.0
+value = 10.0
+show_percentage = false
 
 [node name="explosion" type="AudioStreamPlayer" parent="." unique_id=1896251390]
 stream = ExtResource("3_j7huh")
