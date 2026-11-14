@@ -1,12 +1,19 @@
 extends Control
 
 var sayings = ["The galaxy is under siege.\n\n\n\n\n\n\n[center][Press SPACE to continue][/center]",
-"Intergalactic terrorists have already destroyed multiple solar systems... and now, they threaten to blot out our sun and plunge us into icy death.",
+"Intergalactic terrorists have already destroyed multiple solar systems... and now, they threaten to blot out our sun and plunge us into eternal darkness.",
 "Scientists around the world have found just one solution to save us from imminent destruction:",
 "We need to rocket lemurs into the sun.",
 "Nikola Tesla has appointed you as Lieutenant Lemur Lassoer.",
-"Their only hope was to send a fly, resistant to the lamps' lure, able to extinguish mankind's defense once and for all.",
-"You have one goal: [i]BREAK THE LAMPS.[/i]"]
+"Lasso at least 3 lemurs together to form space crews (the more lemurs, the better).",
+"There is only one problem with this plan.",
+"Lemurs of different colors do not get along.",
+"[shake]Do not, under any circumstances, lasso lemurs of different colors together.[/shake]",
+"If you accidentally lasso multi-colored lemurs three times, or take too long to send a lemur crew, the sun will immediately explode and everyone you love you die.",
+"Nikola Tesla is counting on you.",
+"And, well, the entire galaxy.",
+"Have fun :)"
+]
 var index = 0
 
 func _ready() -> void:
@@ -33,5 +40,5 @@ func _process(delta: float) -> void:
 		elif $anim.assigned_animation != "fade out":
 			$anim.play("fade out")
 			await $anim.animation_finished
-			get_tree().change_scene_to_file("res://Scenes/game.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Factory.tscn")
 	
