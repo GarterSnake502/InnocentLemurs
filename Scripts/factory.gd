@@ -23,6 +23,8 @@ const MAX_TERRORIST_MISSLES = 30
 var time_remaining = MAX_TIME
 var terrorist_missles = MAX_TERRORIST_MISSLES
 
+const TESLA_SCORE = 5000
+
 func _ready():
 	for i in range(0, 8):
 		spawn_lemur()
@@ -64,7 +66,10 @@ func restore_spawn_time():
 		anim.play("win")
 		$music.stop()
 		await anim.animation_finished
-		get_tree().change_scene_to_file("res://Scenes/normal_ending.tscn")
+		if points >= TESLA_SCORE:
+			get_tree().change_scene_to_file("res://Scenes/telsa_ending.tscn")
+		else:
+			get_tree().change_scene_to_file("res://Scenes/normal_ending.tscn")
 
 # /// UI /// #
 func update_ui():
