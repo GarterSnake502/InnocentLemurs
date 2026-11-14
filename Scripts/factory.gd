@@ -91,10 +91,10 @@ func destroy_sun(sun):
 	sun.texture = load("res://Assets/UI/sun-dead.png")
 	explosionSfx.pitch_scale = randf_range(0.9, 1.1)
 	explosionSfx.play()
-	#var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
-	#explosion.global_position = sun.global_position
-	#explosion.emitting = true
-	#canvas.add_child(explosion)
+	var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
+	explosion.global_position = sun.global_position
+	explosion.emitting = true
+	canvas.add_child(explosion)
 	anim.play("shake")
 	await get_tree().create_timer(1.5).timeout
 	sun.hide()
