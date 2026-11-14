@@ -186,7 +186,8 @@ func check_diversity():
 		suns_remaining -= 1
 		update_ui()
 	elif enclosedAmount >= MIN_LEMURS:
-		var pts = get_fib_pts(enclosedAmount)
+		var pts = 1 + (enclosedAmount - MIN_LEMURS)
+		#var pts = get_fib_pts(enclosedAmount)
 		points += pts * 100
 		for body in enclosedLemurs:
 			body.collect(pts)

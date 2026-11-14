@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bqne50sdca4xb"]
 
 [ext_resource type="Script" uid="uid://dw78t8soefosi" path="res://Scripts/lemur.gd" id="1_g0r4j"]
-[ext_resource type="Texture2D" uid="uid://cuecqwgb020rq" path="res://Assets/idle.png" id="2_5hki8"]
-[ext_resource type="Texture2D" uid="uid://bj1xo0enq8jc" path="res://Assets/eyes.png" id="3_dhw11"]
-[ext_resource type="AudioStream" uid="uid://chj4kpijhqdee" path="res://Assets/collect.wav" id="4_dhw11"]
-[ext_resource type="AudioStream" uid="uid://sqiibrur2a03" path="res://Assets/bumped_moth.wav" id="5_uu4b4"]
+[ext_resource type="Texture2D" uid="uid://by1ogko01b7t2" path="res://Assets/idle.png" id="2_5hki8"]
+[ext_resource type="Texture2D" uid="uid://6p2vc7mgaai4" path="res://Assets/eyes.png" id="3_dhw11"]
+[ext_resource type="AudioStream" uid="uid://dl2br366q1mlc" path="res://Assets/collect.wav" id="4_dhw11"]
+[ext_resource type="AudioStream" uid="uid://vaspt6ypdl2i" path="res://Assets/bumped_moth.wav" id="5_uu4b4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6scny"]
 size = Vector2(16, 16)
@@ -81,7 +81,7 @@ tracks/1/path = NodePath("Eyes:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.28, 0.63),
+"times": PackedFloat32Array(0.03333333, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]

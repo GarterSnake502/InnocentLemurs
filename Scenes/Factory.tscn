@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://csk5vs07g0cnp"]
 
 [ext_resource type="Script" uid="uid://d0ljnvcc4o802" path="res://Scripts/factory.gd" id="1_xfy5e"]
-[ext_resource type="Texture2D" uid="uid://bhmk1ci0taow4" path="res://Assets/life-presever.png" id="3_52kl0"]
-[ext_resource type="AudioStream" uid="uid://dcd3oa6iaov73" path="res://Assets/explosion.wav" id="3_j7huh"]
+[ext_resource type="Texture2D" uid="uid://crdfnj57ttu4x" path="res://Assets/life-presever.png" id="3_52kl0"]
+[ext_resource type="AudioStream" uid="uid://65mvdgpqied0" path="res://Assets/explosion.wav" id="3_j7huh"]
 [ext_resource type="Texture2D" uid="uid://c15il4ra4ui3h" path="res://Assets/UI/sun-happy.png" id="4_4mmdj"]
-[ext_resource type="AudioStream" uid="uid://wsi88dlk6bh7" path="res://Assets/gameover.wav" id="4_wu7b3"]
-[ext_resource type="AudioStream" uid="uid://ba4poskpm8y02" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
+[ext_resource type="AudioStream" uid="uid://et15lmt068da" path="res://Assets/gameover.wav" id="4_wu7b3"]
+[ext_resource type="AudioStream" uid="uid://c04npotb2gmnk" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
 [ext_resource type="TileSet" uid="uid://irkcgmmrcg2x" path="res://Assets/factory_tileset.tres" id="7_4sda8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82hr6"]
