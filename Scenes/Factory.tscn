@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bupu8e28wlhmk" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
 [ext_resource type="TileSet" uid="uid://irkcgmmrcg2x" path="res://Assets/factory_tileset.tres" id="7_4sda8"]
 [ext_resource type="AudioStream" uid="uid://cayw71g644alq" path="res://Assets/bouncy.mp3" id="8_52kl0"]
+[ext_resource type="AudioStream" uid="uid://drw30bcjntugm" path="res://Assets/fanfare.mp3" id="9_4mmdj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82hr6"]
 radius = 28.284271
@@ -283,5 +284,8 @@ libraries/ = SubResource("AnimationLibrary_4mmdj")
 
 [node name="Bouncy" type="AudioStreamPlayer" parent="." unique_id=1272073185]
 stream = ExtResource("8_52kl0")
+
+[node name="Lasso Fanfare" type="AudioStreamPlayer" parent="." unique_id=1107427298]
+stream = ExtResource("9_4mmdj")
 
 [connection signal="body_entered" from="bumperArea" to="." method="bump"]
