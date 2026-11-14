@@ -70,6 +70,7 @@ _data = {
 
 [node name="Lemur" type="CharacterBody2D" unique_id=361857280 groups=["lemurs"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_g0r4j")
 
 [node name="Jump Timer" type="Timer" parent="." unique_id=656368909]
