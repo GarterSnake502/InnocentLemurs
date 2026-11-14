@@ -274,6 +274,17 @@ Go for a high score!"
 label_settings = SubResource("LabelSettings_c8kfn")
 horizontal_alignment = 1
 
+[node name="Point Display" type="Label" parent="." unique_id=5007636]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 7.0
+offset_right = 1025.0
+offset_bottom = 214.0
+scale = Vector2(0.23, 0.23)
+theme_override_font_sizes/font_size = 64
+label_settings = SubResource("LabelSettings_c8kfn")
+horizontal_alignment = 1
+
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=865190050]
 stream = ExtResource("6_c8kfn")
 autoplay = true
