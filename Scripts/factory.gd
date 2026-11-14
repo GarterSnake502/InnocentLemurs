@@ -1,5 +1,46 @@
 extends Node2D
 
+var points = 0
+var suns_remaining = 3
+
+@onready var cam = $Camera2D
+
+@onready var canvas = $CanvasLayer
+@onready var ptsLabel = $CanvasLayer/Points
+@onready var sun1 = $CanvasLayer/sun1
+@onready var sun2 = $CanvasLayer/sun2
+@onready var sun3 = $CanvasLayer/sun3
+
+@onready var explosionSfx = $explosion
+@onready var gameOverSfx = $gameover
+@onready var anim = $anim
+
+# /// UI /// #
+func update_ui():
+	ptsLabel.text = "Points: " + str(points)
+	if suns_remaining < 3 and sun3.visible:
+		destroy_sun(sun3)
+	if suns_remaining < 2 and sun2.visible:
+		destroy_sun(sun2)
+	if suns_remaining < 1 and sun1.visible:
+		destroy_sun(sun1)
+	if suns_remaining <= 0:
+		destroy_world()
+
+func destroy_sun(sun):
+	explosionSfx.pitch_scale = randf_range(0.9, 1.1)
+	explosionSfx.play()
+	sun.hide()
+	var explosion = load("res://Scenes/sun_explosion.tscn").instantiate()
+	explosion.global_position = sun.global_position
+	explosion.emitting = true
+	canvas.add_child(explosion)
+	anim.play("shake")
+
+func destroy_world():
+	anim.play("gameover")
+	gameOverSfx.play()
+
 # /// Enclosure /// #
 @onready var enclosureLine = $enclosureLine
 var enclosing = false
@@ -39,19 +80,21 @@ func check_diversity():
 		if Geometry2D.is_point_in_polygon(enclosureLine.to_local(lemur.global_position), poly):
 			enclosedLemurs.append(lemur)
 	var enclosedAmount = len(enclosedLemurs)
-	var enclosedColor = ""
-	var diverse = false
+	var enclosedColor = Color(0,0,0)
+	var diverse = true
 	for body in enclosedLemurs:
-		if enclosedColor == "":
+		if enclosedColor == Color(0,0,0):
 			enclosedColor = body.color
 		else:
 			if body.color != enclosedColor:
 				diverse = true
 	if diverse:
 		print("DIVERSITY ALERT!!")
+		suns_remaining -= 1
+		update_ui()
 	elif enclosedAmount > MIN_LEMURS:
 		var pts = get_fib_pts(enclosedAmount)
-		print("YOU GOT " + str(pts) + "PTS!!")
+		points += pts * 100
 
 func get_fib_pts(value: int, start: int = 6) -> int:
 	if value < start:
