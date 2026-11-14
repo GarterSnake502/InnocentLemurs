@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bqne50sdca4xb"]
 
 [ext_resource type="Script" uid="uid://dw78t8soefosi" path="res://Scripts/lemur.gd" id="1_g0r4j"]
-[ext_resource type="Texture2D" uid="uid://cuecqwgb020rq" path="res://Assets/idle.png" id="2_5hki8"]
-[ext_resource type="Texture2D" uid="uid://bj1xo0enq8jc" path="res://Assets/eyes.png" id="3_dhw11"]
+[ext_resource type="Texture2D" uid="uid://d3oyd7sn7mkl3" path="res://Assets/idle.png" id="2_5hki8"]
+[ext_resource type="Texture2D" uid="uid://f1aejabh683q" path="res://Assets/eyes.png" id="3_dhw11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6scny"]
 size = Vector2(16, 16)
@@ -68,6 +68,9 @@ _data = {
 &"idle": SubResource("Animation_alvc0")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hki8"]
+size = Vector2(18, 18)
+
 [node name="Lemur" type="CharacterBody2D" unique_id=361857280 groups=["lemurs"]]
 collision_layer = 2
 collision_mask = 5
@@ -88,5 +91,10 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1744297539]
 libraries/ = SubResource("AnimationLibrary_xanjr")
+
+[node name="wallCol" type="Area2D" parent="." unique_id=2078617497]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wallCol" unique_id=880380036]
+shape = SubResource("RectangleShape2D_5hki8")
 
 [connection signal="timeout" from="Jump Timer" to="." method="jump_random_angle"]

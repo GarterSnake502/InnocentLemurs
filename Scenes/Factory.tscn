@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://csk5vs07g0cnp"]
 
 [ext_resource type="Script" uid="uid://d0ljnvcc4o802" path="res://Scripts/factory.gd" id="1_xfy5e"]
-[ext_resource type="Texture2D" uid="uid://wskuw3dnwc8m" path="res://icon.svg" id="2_ix8fr"]
-[ext_resource type="AudioStream" uid="uid://bh5np5xqhbjmg" path="res://Assets/explosion.wav" id="3_j7huh"]
+[ext_resource type="Texture2D" uid="uid://dkmeer5iqrp13" path="res://Assets/life-presever.png" id="3_52kl0"]
+[ext_resource type="AudioStream" uid="uid://cl0dycnpyayhj" path="res://Assets/explosion.wav" id="3_j7huh"]
 [ext_resource type="Texture2D" uid="uid://c15il4ra4ui3h" path="res://Assets/UI/sun-happy.png" id="4_4mmdj"]
-[ext_resource type="AudioStream" uid="uid://b8w4lp080ailk" path="res://Assets/gameover.wav" id="4_wu7b3"]
-[ext_resource type="AudioStream" uid="uid://bupu8e28wlhmk" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
+[ext_resource type="AudioStream" uid="uid://hxidv4weulmk" path="res://Assets/gameover.wav" id="4_wu7b3"]
+[ext_resource type="AudioStream" uid="uid://c1nn17ut8hgdl" path="res://Assets/insect_factory.wav" id="5_a5v3u"]
 [ext_resource type="TileSet" uid="uid://irkcgmmrcg2x" path="res://Assets/factory_tileset.tres" id="7_4sda8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82hr6"]
@@ -105,8 +105,8 @@ monitoring = false
 monitorable = false
 
 [node name="Icon" type="Sprite2D" parent="bumperArea" unique_id=1981314365]
-scale = Vector2(0.315, 0.315)
-texture = ExtResource("2_ix8fr")
+scale = Vector2(1.72, 1.72)
+texture = ExtResource("3_52kl0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bumperArea" unique_id=846237808]
 shape = SubResource("CircleShape2D_82hr6")
