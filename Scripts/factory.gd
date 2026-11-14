@@ -142,6 +142,7 @@ func bump(body):
 	if body.is_in_group("lemurs"):
 		body.start_jump(bumper.global_position.angle_to_point(body.global_position), BUMP_STRENGTH)
 		body.bump_sfx()
+		$Bouncy.play()
 
 func stop_bumper():
 	bumper.hide()
@@ -176,7 +177,6 @@ func check_diversity():
 	for lemur in get_tree().get_nodes_in_group("lemurs"):
 		if Geometry2D.is_point_in_polygon(enclosureLine.to_local(lemur.global_position), poly):
 			enclosedLemurs.append(lemur)
-	print(enclosedLemurs)
 	var enclosedAmount = len(enclosedLemurs)
 	var enclosedColor = Color(0,0,0)
 	var diverse = false
@@ -187,11 +187,10 @@ func check_diversity():
 			if body.color != enclosedColor:
 				diverse = true
 	if diverse:
-		print("DIVERSITY ALERT!!")
 		suns_remaining -= 1
 		update_ui()
 	elif enclosedAmount >= MIN_LEMURS:
-		var pts = 1 + (enclosedAmount - MIN_LEMURS)
+		var pts = get_fib_pts(enclosedAmount)
 		#var pts = get_fib_pts(enclosedAmount)
 		points += pts * 100
 		for body in enclosedLemurs:
@@ -206,7 +205,7 @@ func check_diversity():
 func get_fib_pts(value: int, start: int = MIN_LEMURS) -> int:
 	if value < start:
 		return 0
-	return fib(value - start + 1)
+	return fib(value - start + 2)
 
 func fib(n: int) -> int:
 	var a = 1
