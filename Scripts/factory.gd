@@ -22,6 +22,7 @@ const MAX_TERRORIST_MISSLES = 30
 var time_remaining = MAX_TIME
 var terrorist_missles = MAX_TERRORIST_MISSLES
 
+const CROSSOVER_SCORE = 4500
 const TESLA_SCORE = 5000
 
 func _ready():
@@ -68,6 +69,8 @@ func restore_spawn_time():
 		await anim.animation_finished
 		if Score.points >= TESLA_SCORE:
 			get_tree().change_scene_to_file("res://Scenes/telsa_ending.tscn")
+		elif Score.points >= CROSSOVER_SCORE:
+			get_tree().change_scene_to_file("res://Scenes/crossover_ending.tscn")
 		else:
 			get_tree().change_scene_to_file("res://Scenes/normal_ending.tscn")
 
