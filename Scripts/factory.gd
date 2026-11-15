@@ -150,6 +150,7 @@ func bump(body):
 func stop_bumper():
 	bumper.hide()
 	bumper.monitoring = false
+	bumper.position = Vector2(9999, 9999)
 	bumping = false
 
 func start_enclosure():

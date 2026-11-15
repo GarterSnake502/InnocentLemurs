@@ -28,6 +28,8 @@ func _physics_process(delta: float) -> void:
 		if vert_vel >= -START_JUMP_VEL:
 			$"Jump Timer".wait_time = randf_range(1, 3)
 			$"Jump Timer".start()
+			if $AnimationPlayer.current_animation != "die":
+				$AnimationPlayer.play("idle")
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
@@ -49,6 +51,8 @@ func start_jump(angle, jump_speed = JUMP_SPEED):
 		$Eyes.flip_h = false
 	vert_vel = START_JUMP_VEL
 	horizontal_vel = jump_dir * jump_speed
+	if $AnimationPlayer.current_animation != "die":
+		$AnimationPlayer.play("RESET")
 
 func bump_sfx():
 	$bump.play()
