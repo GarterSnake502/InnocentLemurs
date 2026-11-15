@@ -26,7 +26,7 @@ const CROSSOVER_SCORE = 4500
 const TESLA_SCORE = 5000
 
 func _ready():
-	print(str(Score.points))
+	Score.points = 0
 	for i in range(0, 8):
 		spawn_lemur()
 		nextWaveTime.max_value = MAX_TIME
@@ -61,7 +61,7 @@ func spawn_lemur():
 
 func restore_spawn_time():
 	terrorist_missles -= 1
-	terroristMisslesRemainingLabel.text = "Terrorist missles remaining: " + str(terrorist_missles)
+	terroristMisslesRemainingLabel.text = "Terrorist missiles remaining: " + str(terrorist_missles)
 	time_remaining = MAX_TIME
 	if terrorist_missles <= 0:
 		anim.play("win")
@@ -219,3 +219,7 @@ func fib(n: int) -> int:
 		a = b
 		b = tmp
 	return a
+
+
+func _on_music_finished() -> void:
+	$music.play()
